@@ -1,0 +1,18 @@
+{
+  "name": "nivo-slider",
+  "version": "1.0.0",
+  "description": "Use Nivo Lightbox on all WordPress images",
+  "author": "Logos Creative",
+  "homepage": "http://logoscreative.co",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-less": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-recess": "~0.3.5",
+    "grunt-imageoptim": "~1.2.11",
+    "grunt-version": "~0.2.2"
+  }
+}
