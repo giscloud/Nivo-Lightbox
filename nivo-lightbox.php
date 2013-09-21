@@ -2,16 +2,16 @@
 /**
  * Nivo Lightbox for WordPress
  *
- * Customize child theme for Loft at Due South
+ * Use Nivo Lightbox on all WordPress images
  *
- * @package   NL_Vault
+ * @package   NL_WordPress
  * @author    Cliff Seal <cliff@logos-creative.com>
  * @link      http://logoscreative.co
  * @copyright 2013 Logos Creative
  *
  * @wordpress-plugin
  * Plugin Name: Nivo Lightbox for WordPress
- * Plugin URI:  http://dev7studios.com/nivo-lightbox
+ * Plugin URI:  https://github.com/logoscreative/Nivo-Lightbox
  * Description: Use Nivo Lightbox on all WordPress images
  * Version:     1.0.0
  * Author:      Cliff Seal <cliff@logos-creative.com>
@@ -26,10 +26,10 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin class.
  *
- * @package NL_Vault
- * @author  Your Name <email@example.com>
+ * @package NL_WordPress
+ * @author  Cliff Seal <cliff@logos-creative.com>
  */
-class NL_Vault {
+class NL_WordPress {
 
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
@@ -121,4 +121,4 @@ class NL_Vault {
 
 }
 
-NL_Vault::get_instance();
+NL_WordPress::get_instance();
