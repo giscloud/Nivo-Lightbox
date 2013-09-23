@@ -78,7 +78,6 @@ class NL_WordPress {
 	private function __construct() {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'nl_enqueue_scripts' ) );
-		add_action( 'wp_footer', array( $this, 'nl_init_nl' ) );
 
 	}
 
