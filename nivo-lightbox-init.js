@@ -1,7 +1,13 @@
 jQuery(document).ready(function(){
     jQuery('.gallery a:has(img)').attr('data-lightbox-gallery', 'nivo-gallery');
+    // To handle this for now: https://github.com/gilbitron/Nivo-Lightbox/issues/3
+    if ( jQuery(window).width() > 480 ) {
+        var effect = 'fade';
+    } else {
+        var effect = '';
+    }
     jQuery('a:has(img)').nivoLightbox({
-        effect: 'fade', // The effect to use when showing the lightbox
+        effect: effect,
         theme: 'default', // The lightbox theme to use
         keyboardNav: true, // Enable/Disable keyboard navigation (left/right/escape)
         onInit: function(){}, // Callback when lightbox has loaded
