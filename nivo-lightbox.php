@@ -13,7 +13,7 @@
  * Plugin Name: Nivo Lightbox for WordPress
  * Plugin URI:  https://github.com/logoscreative/Nivo-Lightbox
  * Description: Use Nivo Lightbox on all WordPress images
- * Version:     1.0.0
+ * Version:     1.1.0
  * Author:      Cliff Seal <cliff@logos-creative.com>
  * Author URI:  http://logoscreative.co
  */
@@ -104,13 +104,13 @@ class NL_WordPress {
 	 * @since    1.0.0
 	 */
 	public function nl_enqueue_scripts() {
-		wp_register_style( 'nivo-lightbox', plugin_dir_url( __FILE__ ) . 'nivo-lightbox.min.css' );
+		wp_register_style( 'nivo-lightbox', plugin_dir_url( __FILE__ ) . 'nivo-lightbox.min.css', array(), '1.1' );
 		wp_enqueue_style( 'nivo-lightbox' );
 
-		wp_register_style( 'nivo-lightbox-theme', plugin_dir_url( __FILE__ ) . 'themes/default/default.css' );
+		wp_register_style( 'nivo-lightbox-theme', plugin_dir_url( __FILE__ ) . 'themes/default/default.css', array(), '1.1' );
 		wp_enqueue_style( 'nivo-lightbox-theme' );
 
-		wp_register_script( 'nivo-lightbox', plugin_dir_url( __FILE__ ) . 'nivo-lightbox.min.js', array('jquery'), false, true );
+		wp_register_script( 'nivo-lightbox', plugin_dir_url( __FILE__ ) . 'nivo-lightbox.min.js', array('jquery'), '1.1', true );
 		wp_enqueue_script( 'nivo-lightbox' );
 
 		wp_register_script( 'nivo-lightbox-init', plugin_dir_url( __FILE__ ) . 'nivo-lightbox-init.min.js', array('jquery'), false, true );
