@@ -120,6 +120,7 @@
         processContent: function(content, link){
             var $this = this;
             var href = link.attr('href');
+            var datagridText = link && link[0] && link[0].text;
             content.html('').addClass('nivo-lightbox-loading');
 
             // Is HiDPI?
@@ -128,7 +129,7 @@
             }
 
             // Image
-            if(href.match(/\.(jpeg|jpg|gif|png)$/i) != null){
+            if(href.match(/\.(jpeg|jpg|gif|png)$/i) != null || (datagridText && datagridText.match(/\.(jpeg|jpg|gif|png)$/i) !== null)){
                 var img = $('<img>', { src: href });
                 img.one('load', function() {
                     var wrap = $('<div class="nivo-lightbox-image" />');
