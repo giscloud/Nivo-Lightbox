@@ -253,8 +253,9 @@
             }
             // iFrame (default)
             else {
+                // added ? because of FF cache
                 var iframe = $('<iframe>', {
-                    src: href,
+                    src: href + "?",
                     'class': 'nivo-lightbox-item',
                     frameborder: 0,
                     vspace: 0,
