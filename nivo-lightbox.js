@@ -121,6 +121,14 @@
             var $this = this;
             var href = link.attr('href');
             var datagridText = link && link[0] && link[0].text;
+
+            // check if img file is panorama
+            var columnIndex = $(link.context).parent().index();
+            var rowIndex = $(link.context).parents("li").index();
+            var columnName = $(link.context).parents("#layerdata_table").find(".th").get(columnIndex).title;
+            var datagridRowData = gcdatagrid && gcdatagrid.getDataByRow(rowIndex);
+            var isPanorama = datagridRowData && JSON.parse(datagridRowData[columnName].replace("___json", "")).panorama;
+
             content.html('').addClass('nivo-lightbox-loading');
 
             // Is HiDPI?
@@ -129,7 +137,7 @@
             }
 
             // Image
-            if(href.match(/\.(jpeg|jpg|gif|png)$/i) != null || (datagridText && datagridText.match(/\.(jpeg|jpg|gif|png)$/i) !== null)){
+            if(!isPanorama && (href.match(/\.(jpeg|jpg|gif|png)$/i) != null || (datagridText && datagridText.match(/\.(jpeg|jpg|gif|png)$/i) !== null))){
                 var img = $('<img>', { src: href });
                 img.one('load', function() {
                     var wrap = $('<div class="nivo-lightbox-image" />');
