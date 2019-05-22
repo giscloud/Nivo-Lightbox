@@ -81,7 +81,23 @@
             $('body').addClass('nivo-lightbox-body-effect-'+ this.options.effect);
 
             // Add content
-            this.processContent(content, currentLink);
+            var href = currentLink.attr('href');
+            var featureLink = href.match(".*/features/[0-9]+");
+            var featureName = href.split("/")[9];
+
+            if (featureLink && featureName) {
+                $.getJSON(featureLink, function (featureName, feature) {
+                    var jsonData = feature.data[featureName];
+                    if (jsonData && jsonData.match("^___json*")) {
+                        jsonData = JSON.parse(jsonData.replace("___json", ""));
+                        this.processContent(content, currentLink, (jsonData && jsonData.panorama));
+                    } else {
+                        this.processContent(content, currentLink);
+                    }
+                }.bind(this, featureName));
+            } else {
+                this.processContent(content, currentLink);
+            }
 
             // Nav
             if(this.$el.attr('data-lightbox-gallery')){
@@ -117,17 +133,10 @@
             }, 1); // For CSS transitions
         },
 
-        processContent: function(content, link){
+        processContent: function(content, link, isPanorama){
             var $this = this;
             var href = link.attr('href');
             var datagridText = link && link[0] && link[0].text;
-
-            // check if img file is panorama
-            var columnIndex = $(link.context).parent().index();
-            var rowIndex = $(link.context).parents("li").index();
-            var columnName = $(link.context).parents("#layerdata_table").find(".th").get(columnIndex).title;
-            var datagridRowData = gcdatagrid && gcdatagrid.getDataByRow(rowIndex);
-            var isPanorama = datagridRowData && JSON.parse(datagridRowData[columnName].replace("___json", "")).panorama;
 
             content.html('').addClass('nivo-lightbox-loading');
 
