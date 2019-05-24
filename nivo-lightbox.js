@@ -90,7 +90,7 @@
                     var jsonData = feature.data[featureName];
                     if (jsonData && jsonData.match("^___json*")) {
                         jsonData = JSON.parse(jsonData.replace("___json", ""));
-                        this.processContent(content, currentLink, (jsonData && jsonData.panorama));
+                        this.processContent(content, currentLink, (jsonData && jsonData[0].panorama));
                     } else {
                         this.processContent(content, currentLink);
                     }
