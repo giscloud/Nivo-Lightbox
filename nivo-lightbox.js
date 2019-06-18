@@ -85,6 +85,13 @@
             var featureLink = href.match(".*/features/[0-9]+");
             var featureName = href.split("/")[9];
 
+            // if web app is on htpps and attr link is http open link in new page
+            if (window.location.protocol === "https:" && href.indexOf(window.location.protocol) !== 0) {
+                window.open(href, '_blank');
+                $this.destructLightbox();
+                return;
+            }
+
             if (featureLink && featureName) {
                 $.getJSON(featureLink, function (featureName, feature) {
                     var jsonData = feature.data[featureName];
@@ -146,7 +153,7 @@
             }
 
             // Image
-            if(!isPanorama && (href.match(/\.(jpeg|jpg|gif|png)$/i) != null || (datagridText && datagridText.match(/\.(jpeg|jpg|gif|png)$/i) !== null))){
+            if (!isPanorama && (href.match(/\.(jpeg|jpg|gif|png)$/i) != null || (datagridText && datagridText.match(/\.(jpeg|jpg|gif|png)$/i) !== null))){
                 var img = $('<img>', { src: href });
                 img.one('load', function() {
                     var wrap = $('<div class="nivo-lightbox-image" />');
